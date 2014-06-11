@@ -19,7 +19,7 @@ static const uint32_t pinkCategory   = 0x1 << 5;
 
 @implementation MyScene
 
-//static vectors for the cloud & mountain images
+//static vectors for the cloud image
 static const float CLOUD_VELOCITY = 100.0;
 static inline CGPoint CGPointAdd(const CGPoint a, CGPoint b){
     
@@ -54,6 +54,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         
         [self addChild:lever];
         
+        //run lever animation
         [lever runAction:leverAnimation];
         
         //add heart sprites
@@ -73,6 +74,8 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         //by default isHit bool is NO
         isHit = NO;
         speed = 20;
+        
+        //by default score and values are set to 0
         score = 0;
         blueValue = 0;
         greenValue = 0;
@@ -107,7 +110,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         scoreLabel.text = @"Score: 0";
         scoreLabel.fontSize = 30;
         scoreLabel.fontColor = [UIColor blackColor];
-        scoreLabel.position = CGPointMake(10, CGRectGetMidY(self.frame) - 30);
+        scoreLabel.position = CGPointMake(10, CGRectGetMidY(self.frame) - 10);
         scoreLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
         [self addChild:scoreLabel];
         
@@ -388,7 +391,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     blue.physicsBody.dynamic = YES;
     blue.physicsBody.categoryBitMask = blueCategory;
     blue.physicsBody.contactTestBitMask = birdCategory;
-    blue.physicsBody.collisionBitMask = birdCategory;
+    blue.physicsBody.collisionBitMask = 0;
     blue.physicsBody.usesPreciseCollisionDetection = YES;
     
     float randomNum = arc4random_uniform(3) + 3;
@@ -408,7 +411,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     green.physicsBody.dynamic = YES;
     green.physicsBody.categoryBitMask = greenCategory;
     green.physicsBody.contactTestBitMask = birdCategory;
-    green.physicsBody.collisionBitMask = birdCategory;
+    green.physicsBody.collisionBitMask = 0;
     green.physicsBody.usesPreciseCollisionDetection = YES;
     
     float randomNum = arc4random_uniform(3) + 3;
@@ -428,7 +431,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     orange.physicsBody.dynamic = YES;
     orange.physicsBody.categoryBitMask = orangeCategory;
     orange.physicsBody.contactTestBitMask = birdCategory;
-    orange.physicsBody.collisionBitMask = birdCategory;
+    orange.physicsBody.collisionBitMask = 0;
     orange.physicsBody.usesPreciseCollisionDetection = YES;
     
     float randomNum = arc4random_uniform(3) + 3;
@@ -449,7 +452,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     pink.physicsBody.dynamic = YES;
     pink.physicsBody.categoryBitMask = pinkCategory;
     pink.physicsBody.contactTestBitMask = birdCategory;
-    pink.physicsBody.collisionBitMask = birdCategory;
+    pink.physicsBody.collisionBitMask = 0;
     pink.physicsBody.usesPreciseCollisionDetection = YES;
     
     float randomNum = arc4random_uniform(3) + 3;
@@ -530,7 +533,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     
     [self enumerateChildNodesWithName:@"blue" usingBlock:^(SKNode *blueNode, BOOL *stop) {
         
-        if(blueNode.position.x < 0 || blueNode.position.y < 0){
+        if(blueNode.position.x <= 0 || blueNode.position.y <= 0){
             
             //removes ball when it goes off screen
             [blueNode removeFromParent];
@@ -545,7 +548,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     
     [self enumerateChildNodesWithName:@"green" usingBlock:^(SKNode *greenNode, BOOL *stop) {
         
-        if(greenNode.position.x < 0 || greenNode.position.y < 0){
+        if(greenNode.position.x <= 0 || greenNode.position.y <= 0){
             
             //removes green fruit when it goes off screen
             [greenNode removeFromParent];
@@ -560,7 +563,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     
     [self enumerateChildNodesWithName:@"orange" usingBlock:^(SKNode *orangeNode, BOOL *stop) {
         
-        if(orangeNode.position.x < 0 || orangeNode.position.y < 0){
+        if(orangeNode.position.x <= 0 || orangeNode.position.y <= 0){
             
             //removes green fruit when it goes off screen
             [orangeNode removeFromParent];
@@ -575,7 +578,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     
     [self enumerateChildNodesWithName:@"pink" usingBlock:^(SKNode *pinkNode, BOOL *stop) {
         
-        if(pinkNode.position.x < 0 || pinkNode.position.y < 0){
+        if(pinkNode.position.x <= 0 || pinkNode.position.y <= 0){
             
             //removes pink fruit when it goes off screen
             [pinkNode removeFromParent];
