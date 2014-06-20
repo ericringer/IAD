@@ -10,6 +10,7 @@
 #import "MyScene.h"
 #import "IntroScene.h"
 
+
 @implementation GameOverScene
 
 -(id)initWithSize:(CGSize)size gameOver:(BOOL)gameOver{
@@ -70,6 +71,21 @@
     return self;
 }
 
++(GameOverScene *)sceneWithScore:(NSString *)score{
+
+    return [[self alloc] initWithScore:score];
+}
+
+-(id)initWithScore:(NSString *)score
+{
+    self = [super init];
+    if (!self) return(nil);
+    
+    self.userInteractionEnabled = YES;
+    
+    return self;
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     UITouch *touch = [touches anyObject];
@@ -92,5 +108,6 @@
         
     }
 }
+
 
 @end

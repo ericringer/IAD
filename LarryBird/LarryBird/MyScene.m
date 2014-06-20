@@ -8,6 +8,8 @@
 
 #import "MyScene.h"
 #import "GameOverScene.h"
+#import "GameKitHelper.h"
+
 
 //categories
 static const uint32_t ballCategory   = 0x1;
@@ -16,6 +18,8 @@ static const uint32_t blueCategory   = 0x1 << 2;
 static const uint32_t greenCategory  = 0x1 << 3;
 static const uint32_t orangeCategory = 0x1 << 4;
 static const uint32_t pinkCategory   = 0x1 << 5;
+
+NSDictionary *leaderboardIDs;
 
 @implementation MyScene
 
@@ -41,6 +45,9 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         
         [self initalizingCloudScrolling];
         [self initalizingMountainScrolling];
+        
+        leaderboardIDs = @{[NSString stringWithFormat:@"%d", score]:
+                               @"com.ericringer.LarryBird_wins"};
         
         
         SKTextureAtlas *leverAtlas = [SKTextureAtlas atlasNamed:@"lever"];
@@ -81,6 +88,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         greenValue = 0;
         orangeValue = 0;
         pinkValue = 0;
+        scoreTotal = score;
         
         //set physics world to have no gravity
         self.physicsWorld.gravity = CGVectorMake(0, 0);
@@ -115,6 +123,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         [self addChild:scoreLabel];
         
      }
+    
     return self;
 }
 
@@ -354,7 +363,8 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
             
             //restart game
             self.scene.view.paused = NO;
-        }
+            
+            }
       }
     }
     
@@ -458,26 +468,6 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     float randomNum = arc4random_uniform(3) + 3;
     [self performSelector:@selector(addPinkFruit) withObject:nil afterDelay:randomNum];
 }
-
-/*-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-
-    for(UITouch *touch in touches){
-    
-        CGPoint location = [touch locationInNode:self];
-        CGPoint newPosition = CGPointMake(location.x, 100);
-        
-        if(newPosition.x < bird.size.width/2){
-        
-            newPosition.x = bird.size.width/2;
-        }
-        if(newPosition.x > bird.size.width - (bird.size.width/2)){
-        
-            newPosition.x = bird.size.width - (bird.size.width/2);
-        }
-        
-        //bird.position = newPosition;
-    }
-}*/
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
@@ -639,6 +629,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         //transition of restart
         SKTransition *reStart = [SKTransition doorsOpenVerticalWithDuration:5.0];
         [self.view presentScene:endGame transition:reStart];
+        
     }
     
 }
@@ -682,7 +673,15 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         SKTransition *reStart = [SKTransition doorsOpenVerticalWithDuration:5.0];
         [self.view presentScene:endGame transition:reStart];
         
+        [self reportScoreToGameCenter];
+        
     }
+}
+
+//reports score to game center
+-(void)reportScoreToGameCenter{
+
+    [[GameKitHelper sharedGameKitHelper] reportScore:scoreTotal forLeaderboardID:leaderboardIDs[[NSString stringWithFormat:@"%d", scoreTotal]]];
 }
 
 

@@ -9,6 +9,8 @@
 #import "IntroScene.h"
 #import "MyScene.h"
 #import "CIScene.h"
+#import "GameKitHelper.h"
+
 
 @implementation IntroScene
 
@@ -52,6 +54,17 @@
     
     [self addChild:creditButton];
     
+    NSString *gameCenter;
+    gameCenter = @"Game Center";
+    SKLabelNode *gcButton = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    gcButton.text = gameCenter;
+    gcButton.fontColor = [SKColor blueColor];
+    gcButton.position = CGPointMake(self.size.width/2, 75);
+    gcButton.name = @"gamecenter";
+    [gcButton setScale:.5];
+    
+    [self addChild:gcButton];
+    
     
     
     return self;
@@ -65,7 +78,6 @@
     
     if ([node.name isEqualToString:@"start"]) {
         SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
-        
         MyScene *scene = [MyScene sceneWithSize:self.view.bounds.size];
         scene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:scene transition: reveal];
@@ -75,7 +87,27 @@
         CIScene *ciScene = [CIScene sceneWithSize:self.view.bounds.size];
         ciScene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:ciScene transition: reveal];
+    }else if ([node.name isEqualToString:@"gamecenter"]){
+        
+        [self showGameCenterViewController];
+        
     }
+}
+
+-(void)showGameCenterViewController{
+    
+    GKGameCenterViewController *gameCenterViewController = [[GKGameCenterViewController alloc] init];
+    
+    //set delegate
+    gameCenterViewController.gameCenterDelegate = self;
+    
+    //[gameCenterViewController presentViewController:gameCenterViewController animated:YES completion:nil];
+}
+
+-(void)gameCenterViewControllerDidFinish: (GKGameCenterViewController *)gameCenterViewController
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES
+                                                 completion:nil];
 }
 
 @end

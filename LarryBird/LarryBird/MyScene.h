@@ -26,10 +26,10 @@
     NSTimeInterval runTime;
     
     NSUInteger score;
+    int scoreTotal;
     
     SKAction *jumpMovement;
     SKAction *leverAnimation;
-    //SKAction *sequence;
     
     SKLabelNode *scoreLabel;
     

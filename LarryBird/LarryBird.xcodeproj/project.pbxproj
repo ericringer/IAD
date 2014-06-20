@@ -30,6 +30,9 @@
 		5392960C1927F511007FBB39 /* IntroScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392960B1927F511007FBB39 /* IntroScene.m */; };
 		53929618193157BB007FBB39 /* CIScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 53929617193157BB007FBB39 /* CIScene.m */; };
 		5392961A19354261007FBB39 /* lever.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 5392961919354261007FBB39 /* lever.atlas */; };
+		5392961E194EA392007FBB39 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5392961D194EA392007FBB39 /* GameKit.framework */; };
+		53929622194EAC47007FBB39 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 53929621194EAC47007FBB39 /* GameKitHelper.m */; };
+		53929625194FFA93007FBB39 /* LarryBirdNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53929624194FFA93007FBB39 /* LarryBirdNavigationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +78,11 @@
 		53929616193157BB007FBB39 /* CIScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIScene.h; sourceTree = "<group>"; };
 		53929617193157BB007FBB39 /* CIScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIScene.m; sourceTree = "<group>"; };
 		5392961919354261007FBB39 /* lever.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = lever.atlas; sourceTree = "<group>"; };
+		5392961D194EA392007FBB39 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		53929620194EAC47007FBB39 /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameKitHelper.h; sourceTree = "<group>"; };
+		53929621194EAC47007FBB39 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
+		53929623194FFA93007FBB39 /* LarryBirdNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LarryBirdNavigationViewController.h; sourceTree = "<group>"; };
+		53929624194FFA93007FBB39 /* LarryBirdNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LarryBirdNavigationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +94,7 @@
 				539295C71919C7EE007FBB39 /* UIKit.framework in Frameworks */,
 				539295C91919C7EE007FBB39 /* SpriteKit.framework in Frameworks */,
 				539295C31919C7EE007FBB39 /* Foundation.framework in Frameworks */,
+				5392961E194EA392007FBB39 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +133,7 @@
 		539295C11919C7EE007FBB39 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5392961D194EA392007FBB39 /* GameKit.framework */,
 				539295C21919C7EE007FBB39 /* Foundation.framework */,
 				539295C41919C7EE007FBB39 /* CoreGraphics.framework */,
 				539295C61919C7EE007FBB39 /* UIKit.framework */,
@@ -137,24 +147,15 @@
 			isa = PBXGroup;
 			children = (
 				5392960F192B1128007FBB39 /* iPad */,
-				539296081924880D007FBB39 /* gameover.wav */,
-				53929600191B4D50007FBB39 /* hurtsound.mp3 */,
-				539295FE191B4D48007FBB39 /* jump.wav */,
+				5392961F194EABFB007FBB39 /* GameKit */,
 				539295D31919C7EE007FBB39 /* AppDelegate.h */,
 				539295D41919C7EE007FBB39 /* AppDelegate.m */,
 				539295D61919C7EE007FBB39 /* Main.storyboard */,
-				539295D91919C7EE007FBB39 /* ViewController.h */,
-				539295DA1919C7EE007FBB39 /* ViewController.m */,
-				539295DC1919C7EE007FBB39 /* MyScene.h */,
-				539295DD1919C7EE007FBB39 /* MyScene.m */,
-				5392960A1927F510007FBB39 /* IntroScene.h */,
-				5392960B1927F511007FBB39 /* IntroScene.m */,
-				5392960219245226007FBB39 /* GameOverScene.h */,
-				5392960319245227007FBB39 /* GameOverScene.m */,
-				53929616193157BB007FBB39 /* CIScene.h */,
-				53929617193157BB007FBB39 /* CIScene.m */,
-				539295E11919C7EE007FBB39 /* Images.xcassets */,
+				5392962619500C55007FBB39 /* ViewControllers */,
+				5392961C194EA2EF007FBB39 /* Scenes */,
+				5392961B194EA2A9007FBB39 /* Sounds */,
 				5392961919354261007FBB39 /* lever.atlas */,
+				539295E11919C7EE007FBB39 /* Images.xcassets */,
 				539295CB1919C7EE007FBB39 /* Supporting Files */,
 			);
 			path = LarryBird;
@@ -194,6 +195,51 @@
 			children = (
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		5392961B194EA2A9007FBB39 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				539295FE191B4D48007FBB39 /* jump.wav */,
+				53929600191B4D50007FBB39 /* hurtsound.mp3 */,
+				539296081924880D007FBB39 /* gameover.wav */,
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		5392961C194EA2EF007FBB39 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				539295DC1919C7EE007FBB39 /* MyScene.h */,
+				539295DD1919C7EE007FBB39 /* MyScene.m */,
+				5392960A1927F510007FBB39 /* IntroScene.h */,
+				5392960B1927F511007FBB39 /* IntroScene.m */,
+				5392960219245226007FBB39 /* GameOverScene.h */,
+				5392960319245227007FBB39 /* GameOverScene.m */,
+				53929616193157BB007FBB39 /* CIScene.h */,
+				53929617193157BB007FBB39 /* CIScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		5392961F194EABFB007FBB39 /* GameKit */ = {
+			isa = PBXGroup;
+			children = (
+				53929620194EAC47007FBB39 /* GameKitHelper.h */,
+				53929621194EAC47007FBB39 /* GameKitHelper.m */,
+			);
+			name = GameKit;
+			sourceTree = "<group>";
+		};
+		5392962619500C55007FBB39 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				539295D91919C7EE007FBB39 /* ViewController.h */,
+				539295DA1919C7EE007FBB39 /* ViewController.m */,
+				53929623194FFA93007FBB39 /* LarryBirdNavigationViewController.h */,
+				53929624194FFA93007FBB39 /* LarryBirdNavigationViewController.m */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +291,11 @@
 				TargetAttributes = {
 					539295BE1919C7EE007FBB39 = {
 						DevelopmentTeam = 87ZNPYX9VS;
+						SystemCapabilities = {
+							com.apple.GameCenter = {
+								enabled = 1;
+							};
+						};
 					};
 					539295E61919C7EE007FBB39 = {
 						TestTargetID = 539295BE1919C7EE007FBB39;
@@ -304,7 +355,9 @@
 				5392960C1927F511007FBB39 /* IntroScene.m in Sources */,
 				539295DE1919C7EE007FBB39 /* MyScene.m in Sources */,
 				53929618193157BB007FBB39 /* CIScene.m in Sources */,
+				53929622194EAC47007FBB39 /* GameKitHelper.m in Sources */,
 				539295DB1919C7EE007FBB39 /* ViewController.m in Sources */,
+				53929625194FFA93007FBB39 /* LarryBirdNavigationViewController.m in Sources */,
 				539295D51919C7EE007FBB39 /* AppDelegate.m in Sources */,
 				539295D11919C7EE007FBB39 /* main.m in Sources */,
 			);
@@ -432,11 +485,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LarryBird/LarryBird-Prefix.pch";
 				INFOPLIST_FILE = "LarryBird/LarryBird-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -449,11 +504,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LarryBird/LarryBird-Prefix.pch";
 				INFOPLIST_FILE = "LarryBird/LarryBird-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
