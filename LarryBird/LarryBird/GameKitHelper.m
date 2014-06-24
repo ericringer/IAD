@@ -11,7 +11,9 @@
 @interface GameKitHelper()<GKGameCenterControllerDelegate>
 @end
 
-@implementation GameKitHelper
+@implementation GameKitHelper{
+    BOOL enableGameCenter;
+}
 
 NSString *const PresentAuthenticationViewController = @"present_authentication_view_controller";
 
@@ -28,8 +30,6 @@ NSString *const PresentAuthenticationViewController = @"present_authentication_v
     return sharedGameKitHelper;
 }
 
-BOOL enableGameCenter;
-
 -(id)init {
 
     self = [super init];
@@ -42,12 +42,6 @@ BOOL enableGameCenter;
     }
     
     return self;
-}
-
--(void)gameCenterViewControllerDidFinish: (GKGameCenterViewController *)gameCenterViewController
-{
-    [gameCenterViewController dismissViewControllerAnimated:YES
-                                                 completion:nil];
 }
 
 //authenticate the local player
@@ -96,6 +90,18 @@ BOOL enableGameCenter;
     }
 }
 
+-(void)reportAchievements:(NSArray *)achievements
+{
+    if (!enableGameCenter) {
+        NSLog(@"Local play is not authenticated");
+    }
+    [GKAchievement reportAchievements:achievements
+                withCompletionHandler:^(NSError *error ){
+                    [self setLastError:error];
+                }];
+}
+
+
 //creates and displays the GameCenterViewController
 -(void)showGameCenterViewController:(UIViewController *)viewController{
 
@@ -110,6 +116,12 @@ BOOL enableGameCenter;
     gameCenterViewController.viewState = GKGameCenterViewControllerStateDefault;
     
     [viewController presentViewController:gameCenterViewController animated:YES completion:nil];
+}
+
+-(void)gameCenterViewControllerDidFinish: (GKGameCenterViewController *)gameCenterViewController
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES
+                                                 completion:nil];
 }
 
 //sends score to game center

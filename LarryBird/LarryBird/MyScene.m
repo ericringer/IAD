@@ -681,7 +681,7 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
 //reports score to game center
 -(void)reportScoreToGameCenter{
 
-    [[GameKitHelper sharedGameKitHelper] reportScore:scoreTotal forLeaderboardID:leaderboardIDs[[NSString stringWithFormat:@"%d", scoreTotal]]];
+    [[GameKitHelper sharedGameKitHelper] reportScore:score forLeaderboardID:leaderboardIDs[[NSString stringWithFormat:@"%d", scoreTotal]]];
 }
 
 

@@ -89,25 +89,27 @@
         [self.view presentScene:ciScene transition: reveal];
     }else if ([node.name isEqualToString:@"gamecenter"]){
         
-        [self showGameCenterViewController];
+        //[self showGameCenter:viewController];
         
     }
 }
 
--(void)showGameCenterViewController{
+-(void)showGameCenter:(UIViewController *)viewController{
     
-    GKGameCenterViewController *gameCenterViewController = [[GKGameCenterViewController alloc] init];
+    GKGameCenterViewController *gcController = [[GKGameCenterViewController alloc] init];
     
-    //set delegate
-    gameCenterViewController.gameCenterDelegate = self;
+    if(gcController != nil){
     
-    //[gameCenterViewController presentViewController:gameCenterViewController animated:YES completion:nil];
+        gcController.gameCenterDelegate = self;
+        
+        [viewController presentViewController: gcController animated: YES completion:nil];
+    }
 }
 
--(void)gameCenterViewControllerDidFinish: (GKGameCenterViewController *)gameCenterViewController
-{
-    [gameCenterViewController dismissViewControllerAnimated:YES
-                                                 completion:nil];
+-(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController{
+
 }
+
+
 
 @end

@@ -33,6 +33,7 @@
 		5392961E194EA392007FBB39 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5392961D194EA392007FBB39 /* GameKit.framework */; };
 		53929622194EAC47007FBB39 /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 53929621194EAC47007FBB39 /* GameKitHelper.m */; };
 		53929625194FFA93007FBB39 /* LarryBirdNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53929624194FFA93007FBB39 /* LarryBirdNavigationViewController.m */; };
+		5392962F1958BA1B007FBB39 /* ScoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 5392962E1958BA1B007FBB39 /* ScoreScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,8 @@
 		53929621194EAC47007FBB39 /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameKitHelper.m; sourceTree = "<group>"; };
 		53929623194FFA93007FBB39 /* LarryBirdNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LarryBirdNavigationViewController.h; sourceTree = "<group>"; };
 		53929624194FFA93007FBB39 /* LarryBirdNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LarryBirdNavigationViewController.m; sourceTree = "<group>"; };
+		5392962D1958BA1B007FBB39 /* ScoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreScene.h; sourceTree = "<group>"; };
+		5392962E1958BA1B007FBB39 /* ScoreScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +221,8 @@
 				5392960319245227007FBB39 /* GameOverScene.m */,
 				53929616193157BB007FBB39 /* CIScene.h */,
 				53929617193157BB007FBB39 /* CIScene.m */,
+				5392962D1958BA1B007FBB39 /* ScoreScene.h */,
+				5392962E1958BA1B007FBB39 /* ScoreScene.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				5392960419245228007FBB39 /* GameOverScene.m in Sources */,
 				5392960C1927F511007FBB39 /* IntroScene.m in Sources */,
 				539295DE1919C7EE007FBB39 /* MyScene.m in Sources */,
+				5392962F1958BA1B007FBB39 /* ScoreScene.m in Sources */,
 				53929618193157BB007FBB39 /* CIScene.m in Sources */,
 				53929622194EAC47007FBB39 /* GameKitHelper.m in Sources */,
 				539295DB1919C7EE007FBB39 /* ViewController.m in Sources */,
