@@ -9,6 +9,8 @@
 #import "MyScene.h"
 #import "GameOverScene.h"
 #import "GameKitHelper.h"
+#import "AchievementHelper.h"
+#import "GameScoreHelper.h"
 
 
 //categories
@@ -48,7 +50,6 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         
         leaderboardIDs = @{[NSString stringWithFormat:@"%d", score]:
                                @"com.ericringer.LarryBird_wins"};
-        
         
         SKTextureAtlas *leverAtlas = [SKTextureAtlas atlasNamed:@"lever"];
         SKTexture *lever1 = [leverAtlas textureNamed:@"lever1.png"];
@@ -243,6 +244,14 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     [self fruitHits];
     
     [blue removeFromParent];
+    
+    if(blueValue == 50){
+        
+        achievementHelper = [[AchievementHelper alloc]init];
+        //[achievementHelper blueFruitAchievement];
+    
+        [self reportAchievementForGameState:YES];
+    }
 }
 
 -(void)didHitGreen:(SKSpriteNode*)greenFruit{
@@ -254,6 +263,11 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     [self fruitHits];
     
     [green removeFromParent];
+    
+    if(greenValue == -100){
+    
+        [self reportAchievementForGameState:YES];
+    }
 }
 
 -(void)didHitOrange:(SKSpriteNode*)orangeFruit{
@@ -276,6 +290,11 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
     [self fruitHits];
     
     [pink removeFromParent];
+    
+    if(pinkValue == 200){
+    
+        [self reportAchievementForGameState:YES];
+    }
 }
 
 //detect contact
@@ -581,6 +600,10 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         }
     }];
     
+    //scoreHelper = [[GameScoreHelper alloc]init];
+    //scoreLabel.text = [NSString stringWithFormat:@"Score: %d", [scoreHelper getScore]];
+    
+    
     scoreLabel.text = [NSString stringWithFormat:@"Score: %d", score];
     
 }
@@ -630,8 +653,17 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         SKTransition *reStart = [SKTransition doorsOpenVerticalWithDuration:5.0];
         [self.view presentScene:endGame transition:reStart];
         
+        [self firstWin];
+        
     }
+}
+
+-(void)firstWin{
     
+    if(score == 100){
+        
+        [self reportAchievementForGameState:YES];
+    }
 }
 
 -(void)birdHits{
@@ -674,9 +706,41 @@ static inline CGPoint CGPointMultiplyScalar(const CGPoint a, const CGFloat b){
         [self.view presentScene:endGame transition:reStart];
         
         [self reportScoreToGameCenter];
+        [self reportAchievementForGameState:YES];
         
     }
 }
+
+-(void)reportAchievementForGameState:(BOOL)hasWon{
+    
+    NSString *achievementID;
+    BOOL completedAchievement = NO;
+    //AchievementHelper *achievementHelper = [[AchievementHelper alloc]init];
+    
+    GKAchievement *firstWin = nil;
+    GKAchievement *blueFruitAchievement = nil;
+    GKAchievement *pinkFruitAchievement = nil;
+    GKAchievement *greenFruitAchievement = nil;
+    
+    if(completedAchievement){
+        
+        firstWin = [[GKAchievement alloc]initWithIdentifier:achievementID];
+        firstWin.percentComplete = 100;
+        [self firstWin];
+        
+        blueFruitAchievement = [[GKAchievement alloc]initWithIdentifier:achievementID];
+        blueFruitAchievement.percentComplete = 100;
+        
+        pinkFruitAchievement = [[GKAchievement alloc] initWithIdentifier:achievementID];
+        pinkFruitAchievement.percentComplete = 100;
+        
+        greenFruitAchievement = [[GKAchievement alloc]initWithIdentifier:achievementID];
+        greenFruitAchievement.percentComplete = 100;
+        
+        
+    }
+}
+
 
 //reports score to game center
 -(void)reportScoreToGameCenter{

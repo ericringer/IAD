@@ -7,6 +7,8 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "GameScoreHelper.h"
+#import "AchievementHelper.h"
 
 @interface MyScene : SKScene <SKPhysicsContactDelegate>
 {
@@ -45,6 +47,9 @@
     SKSpriteNode *heart1;
     SKSpriteNode *heart2;
     SKSpriteNode *lever;
+    
+    //GameScoreHelper *scoreHelper;
+    AchievementHelper *achievementHelper;
     
 }
 

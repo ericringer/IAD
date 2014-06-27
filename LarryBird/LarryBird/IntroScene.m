@@ -10,6 +10,7 @@
 #import "MyScene.h"
 #import "CIScene.h"
 #import "GameKitHelper.h"
+#import "ScoreScene.h"
 
 
 @implementation IntroScene
@@ -54,16 +55,16 @@
     
     [self addChild:creditButton];
     
-    NSString *gameCenter;
-    gameCenter = @"Game Center";
-    SKLabelNode *gcButton = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
-    gcButton.text = gameCenter;
-    gcButton.fontColor = [SKColor blueColor];
-    gcButton.position = CGPointMake(self.size.width/2, 75);
-    gcButton.name = @"gamecenter";
-    [gcButton setScale:.5];
+    NSString *scoreScene;
+    scoreScene = @"High Scores";
+    SKLabelNode *scoreButton = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+    scoreButton.text = scoreScene;
+    scoreButton.fontColor = [SKColor blueColor];
+    scoreButton.position = CGPointMake(self.size.width/2, 75);
+    scoreButton.name = @"high score";
+    [scoreButton setScale:.5];
     
-    [self addChild:gcButton];
+    [self addChild:scoreButton];
     
     
     
@@ -87,27 +88,21 @@
         CIScene *ciScene = [CIScene sceneWithSize:self.view.bounds.size];
         ciScene.scaleMode = SKSceneScaleModeAspectFill;
         [self.view presentScene:ciScene transition: reveal];
-    }else if ([node.name isEqualToString:@"gamecenter"]){
+    }else if ([node.name isEqualToString:@"high score"]){
         
-        //[self showGameCenter:viewController];
+        SKTransition *reveal = [SKTransition flipHorizontalWithDuration:0.5];
+        ScoreScene *scoreScene = [ScoreScene sceneWithSize:self.view.bounds.size];
+        scoreScene.scaleMode = SKSceneScaleModeAspectFill;
+        [self.view presentScene:scoreScene transition: reveal];
         
     }
+
 }
 
--(void)showGameCenter:(UIViewController *)viewController{
-    
-    GKGameCenterViewController *gcController = [[GKGameCenterViewController alloc] init];
-    
-    if(gcController != nil){
-    
-        gcController.gameCenterDelegate = self;
-        
-        [viewController presentViewController: gcController animated: YES completion:nil];
-    }
-}
-
--(void)gameCenterViewControllerDidFinish:(GKGameCenterViewController *)gameCenterViewController{
-
+-(void)gameCenterViewControllerDidFinish: (GKGameCenterViewController *)gameCenterViewController
+{
+    [gameCenterViewController dismissViewControllerAnimated:YES
+                                                 completion:nil];
 }
 
 

@@ -8,12 +8,13 @@
 
 #import <SpriteKit/SpriteKit.h>
 #import "IntroScene.h"
-#import "AppDelegate.h"
+#import "MyScene.h"
+#import "GameScoreHelper.h"
 
-@interface ScoreScene : SKScene
 
-+(ScoreScene *)scene;
-
-@property (nonatomic, retain)NSMutableArray *scoreArray;
+@interface ScoreScene : SKScene<GKGameCenterControllerDelegate> {
+    
+    GameScoreHelper *scoreHelper;
+}
 
 @end

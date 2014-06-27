@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LarryBird/ScoreScene.m"
-            timestampString = "425270123.099369"
+            timestampString = "425362957.823827"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "12"
-            endingLineNumber = "12"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
             landmarkName = "@implementation ScoreScene"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LarryBird/ScoreScene.m"
-            timestampString = "425270123.099369"
+            timestampString = "425422882.515751"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
+            startingLineNumber = "95"
+            endingLineNumber = "95"
             landmarkName = "@implementation ScoreScene"
             landmarkType = "3">
          </BreakpointContent>
@@ -41,13 +41,59 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LarryBird/IntroScene.m"
-            timestampString = "425246943.142124"
+            filePath = "LarryBird/GameScoreHelper.h"
+            timestampString = "425446123.515937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "-showGameCenter:"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "@interface GameScoreHelper"
+            landmarkType = "2">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GameScoreHelper mySceneDelegate]"
+                  moduleName = "LarryBird"
+                  urlString = "file://localhost/Users/ericringer/Desktop/MobileGameDesign/LarryBird/LarryBird/GameScoreHelper.h"
+                  timestampString = "425506344.102862"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[GameScoreHelper setMySceneDelegate:]"
+                  moduleName = "LarryBird"
+                  urlString = "file://localhost/Users/ericringer/Desktop/MobileGameDesign/LarryBird/LarryBird/GameScoreHelper.h"
+                  timestampString = "425506344.103155"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "LarryBird/MyScene.m"
+            timestampString = "425518523.421367"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "665"
+            endingLineNumber = "665"
+            landmarkName = "-firstWin"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
